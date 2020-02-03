@@ -1,0 +1,95 @@
+Inkluder dette før \lstinline!\begin{document}!:
+
+
+\usepackage[europeanresistors]{circuitikz}
+
+
+Kode for figur \ref{fig:oppg1}:
+
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz} 
+  \draw
+  (0, 0) to[battery1,l=$V$] ++(0,2)
+  to[switch,l=$S$] ++(2,0)
+  to[R,l=$R$] ++(2.5,0) coordinate(node1)
+  to[short,-*] ++(1.5,0) node[below]{+}
+  (node1) to[C,l=$C$,*-*] ++(0,-2) coordinate(node2)
+  to[short,-*] ++(1.5,0) node[above]{-}
+  ++(0,1) node[]{$v_C$}
+  (node2) to[short] (0,0)
+  ;
+\end{circuitikz}
+\caption{Krets for oppgave 1.} 
+\label{fig:oppg1}
+\end{figure}
+
+
+Kode for figur \ref{fig:oppg2}:
+
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz} 
+  \draw
+  (0, 0) to[battery1,l=$V$] ++(0,2)
+  to[opening switch,l=$S$] ++(2,0)
+  to[R,l=$R_1$] ++(2.5,0) coordinate(node1)
+  to[R,l_=$R_2$,*-*] ++(0,-2)
+  (node1) to[short] ++(1,0) coordinate(node2)
+  to[R,l=$R_3$,*-*] ++(0,-2)
+  (node2) to[R,l=$R_4$,*-*]  ++(2,0) coordinate(node3)
+  to[short,-*] ++(1.5,0) node[below]{+}
+  (node3) to[C,l=$C$,*-*] ++(0,-2) coordinate(node4)
+  to[short,-*] ++(1.5,0) node[above]{-}
+  ++(0,1) node[]{$v_C$}
+  (node4) to[short] (0,0)
+  ;
+\end{circuitikz}
+\caption{Krets for oppgave 2.} 
+\label{fig:oppg2}
+\end{figure}
+
+
+Kode for figur \ref{fig:oppg3}:
+
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz} 
+  \draw
+  (0, 0) to[battery1,l=$V$] ++(0,2)
+  to[switch,l=$S_1$] ++(2,0)
+  to[R,l=$R_1$] ++(2.5,0) coordinate(node1)
+  to[R,l_=$R_2$,*-*] ++(0,-2)
+  (node1) to[short] ++(1,0) node[below]{+} coordinate(vc)
+  ++(0,-1) node[]{$v_C$}
+  ++(0,-1) node[above]{$-$}
+  (vc) to[short] ++(1,0) coordinate(node2)
+  to[C,l=$C$,*-*] ++(0,-2)
+  (node2) to[switch,l=$S_2$]  ++(2,0) 
+  to[R,l=$R_3$] ++(0,-2) 
+  to[short] (0,0)
+  ;
+\end{circuitikz}
+\caption{Krets for oppgave 3.} 
+\label{fig:oppg3}
+\end{figure}
+
+
+Kode for figur \ref{fig:oppg4}:
+
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz} 
+  \draw
+  (0, 0) to[square voltage source,l=$v_1$] ++(0,2)
+  to[R,l=$R$] ++(2.5,0) coordinate(node1)
+  to[short,-*] ++(1.5,0) node[below]{+}
+  (node1) to[C,l=$C$,*-*] ++(0,-2) coordinate(node2)
+  to[short,-*] ++(1.5,0) node[above]{-}
+  ++(0,1) node[]{$v_2$}
+  (node2) to[short] (0,0)
+  ;
+\end{circuitikz}
+\caption{Krets for oppgave 4.} 
+\label{fig:oppg4}
+\end{figure}
