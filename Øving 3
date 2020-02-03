@@ -1,0 +1,90 @@
+Før \begin{document}
+
+\usepackage[europeanresistors]{circuitikz}
+\ctikzset{tripoles/mos style/arrows}
+
+\tikzset{opampdownlbl/.style={
+		below,
+		draw=none,
+		append after command={
+			(\tikzlastnode.north) edge ([shift={(-5pt,0pt)}]\tikzlastnode.north) edge ([shift={(+5pt,0pt)}]\tikzlastnode.north)
+	}},
+	opampuplbl/.style={
+		above,
+		draw=none,
+		append after command={
+			(\tikzlastnode.south) edge ([shift={(-5pt,0pt)}]\tikzlastnode.south) edge ([shift={(+5pt,0pt)}]\tikzlastnode.south)
+}}}
+\end{lstlisting}
+
+Kode for figur \ref{fig:komp}:
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz} 
+\draw
+(0, 0) node[op amp,yscale=-1] (opamp) {}
+(opamp.+) to[R, l_=$R_1$,-o] (-4, 0.5) node[left]{$v_1$}
+(opamp.+) to[short,*-] ++(0,1.5) coordinate (leftR)
+to[R, l=$R_2$] (leftR -| opamp.out)
+to[short,-*] (opamp.out)
+to[short,-o] ++(1,0) node[right]{$v_2$}
+(opamp.-) to node[ground]{} ++(0,-1) 
+(opamp.up) ++ (0,-.5) node[opampdownlbl] {$-V$} -- (opamp.up)
+(opamp.down) ++ (0,.5) node[opampuplbl] {$V$} -- (opamp.down)
+;
+\end{circuitikz}
+\caption{Krets for oppgave 3a og 3b.} 
+\label{fig:komp}
+\end{figure}
+
+
+Kode for figur \ref{fig:int}:
+
+\begin{figure}[h]
+\centering
+\begin{circuitikz} 
+\draw
+(0, 0) node[op amp] (opamp) {}
+(opamp.-) to[R,l_=$R$,-o] (-4, 0.5) node[left]{$v_1$}
+(opamp.-) to[short,*-] ++(0,1.5) coordinate (leftC)
+to[C,l^=$C$] (leftC -| opamp.out)
+to[short,-*] (opamp.out)
+to[short,-o] ++(1,0) node[right]{$v_2$}
+(opamp.+) to node[ground]{} ++(0,-1) 
+;
+\end{circuitikz}
+\caption{Krets for oppgave 3d.} 
+\label{fig:int}
+\end{figure}
+
+
+Kode for figur \ref{fig:full}:
+
+\begin{figure}[htbp]
+\centering
+\begin{circuitikz} 
+\draw
+(0, 0) node[op amp,yscale=-1] (opamp) {}
+(opamp.+) to [short,-] ++(-1,0)
+to[R, l_=$R_1$,-] ++(0,-2)
+to[short,-] ++(0,-1) coordinate(v2v3)
+(opamp.+) to[short,*-] ++(0,1.5) coordinate (leftR)
+to[R, l=$R_2$] (leftR -| opamp.out)
+to[short,-*] (opamp.out) node[below]{$v_1$} coordinate (V1)
+(opamp.-) to node[ground]{} ++(0,-1)  
+(opamp.up) ++ (0,-.5) node[opampdownlbl] {$V$} -- (opamp.up)
+(opamp.down) ++ (0,.5) node[opampuplbl] {$+V$} -- (opamp.down)
+(opamp.+) to node[below]{$v_3$} (opamp.+)
+
+(5, -0.5) node[op amp] (opamp) {}
+(opamp.-) to[R,l_=$R$,-] (V1)
+(opamp.-) to[short,*-] ++(0,1.5) coordinate (leftC)
+to[C,l^=$C$] (leftC -| opamp.out)
+to[short,-*] (opamp.out)
+to[short,-o] ++(1,0) node[right]{$v_2$}
+(opamp.+) to node[ground]{} ++(0,-1)
+(opamp.out) to[short,-] ++(0,-2)
+to [short,-] (v2v3)
+;
+\end{circuitikz}
