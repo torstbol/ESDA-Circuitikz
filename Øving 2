@@ -3,10 +3,10 @@ Inkluder dette før \begin{document}:
 
 \usepackage[europeanresistors]{circuitikz}
 \ctikzset{tripoles/mos style/arrows}
-\end{lstlisting}
+
 
 Kode for figur \ref{fig:M1}:
-\begin{lstlisting}
+
 \begin{figure}[h]
 \centering
 \begin{circuitikz} \draw
